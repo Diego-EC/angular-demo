@@ -8,6 +8,7 @@ import { FilmService } from './services/film.service';
 import { StudentComponent } from './components/student/student.component';
 import { StudentService } from './services/student.service';
 import { StudentsComponent } from './components/students/students.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { StudentsComponent } from './components/students/students.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [FilmService, StudentService],
   bootstrap: [AppComponent]
