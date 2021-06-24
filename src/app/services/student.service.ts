@@ -10,7 +10,7 @@ export class StudentService {
   constructor() {}
   
   getStudents() {
-    this.students = [new Student("Diego", "Ezquerro", 23), new Student("Foo", "Cocreta", 43)];
+    this.students = [new Student("Diego", "Ezquerro", 23), new Student("Luigi", "Bros", 43)];
     return this.students;
   }
 }
