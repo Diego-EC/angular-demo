@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { Student } from 'src/app/models/student.model';
 import { StudentService } from 'src/app/services/student.service';
 
@@ -10,11 +11,13 @@ import { StudentService } from 'src/app/services/student.service';
 export class StudentsComponent implements OnInit {
   students: Student[] = [];
 
-  inputName: string = "";
-  inputSurname: string = "";
-  inputAge: number = 0;
+  addStudentForm = this.formBuilder.group({
+    name: [''],
+    surname: [''],
+    age: [''],
+  });
 
-  constructor(studentService: StudentService) { 
+  constructor(studentService: StudentService, private formBuilder: FormBuilder) { 
     this.students = studentService.getStudents();
   }
 
@@ -22,8 +25,17 @@ export class StudentsComponent implements OnInit {
   }
 
   addStudent(){
-    let student = new Student(this.inputName, this.inputSurname, this.inputAge);
+    let student = new Student(this.addStudentForm.value["name"], this.addStudentForm.value["surname"], 
+      this.addStudentForm.value["age"]);
     this.students.push(student);
+    this.cleanStudentForm();
   }
 
+  cleanStudentForm(){
+    this.addStudentForm.patchValue({
+      name: [''],
+      surname: [''],
+      age: [''],
+    });
+  }
 }

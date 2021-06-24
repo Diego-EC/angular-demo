@@ -6,7 +6,7 @@ import { AppComponent } from './components/app/app.component';
 import { StudentComponent } from './components/student/student.component';
 import { StudentService } from './services/student.service';
 import { StudentsComponent } from './components/students/students.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
@@ -19,7 +19,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ReactiveFormsModule
   ],
   providers: [StudentService],
   bootstrap: [AppComponent]
