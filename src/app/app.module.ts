@@ -9,6 +9,7 @@ import { StudentComponent } from './components/student/student.component';
 import { StudentService } from './services/student.service';
 import { StudentsComponent } from './components/students/students.component';
 import { FormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    FlexLayoutModule
   ],
   providers: [FilmService, StudentService],
   bootstrap: [AppComponent]
