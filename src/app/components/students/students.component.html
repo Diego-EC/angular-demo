@@ -1,5 +1,27 @@
-<p>Students List</p>
-<ul>
-    <li *ngFor="let student of students">{{student}}</li>
-</ul>
-<app-student></app-student>
+<div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="3rem">
+    <h2>Add Student</h2>
+    <div fxLayout="row" >
+        <form fxLayout="row" fxLayout.xs="column" fxLayoutGap="1rem">
+            <div fxLayout="column">
+                <label for="">Name: </label>
+                <input type="text" name="name" id="name" placeholder="Name" [(ngModel)]="inputName">
+            </div>
+            <div fxLayout="column">
+                <label for="">Surname: </label>
+                <input type="text" name="surname" id="surname" placeholder="Surname" [(ngModel)]="inputSurname">
+            </div>
+            <div fxLayout="column">
+                <label for="">Age: </label>
+                <input type="number" name="age" id="age" placeholder="Age" [(ngModel)]="inputAge">
+            </div>
+            <button type="submit" (click)="addStudent()">Add</button>
+        </form>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="center center">
+        <h2>Students List</h2>
+        <div fxLayout="column" fxLayoutAlign="center left" fxLayoutGap="0.5rem">
+            <app-student *ngFor="let student of students; let i = index" [student]="student" [index]="i"></app-student>
+        </div>
+    </div>
+    
+</div>
