@@ -1,18 +1,18 @@
 <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="3rem">
     <h2>Add Student</h2>
     <div fxLayout="row" >
-        <form fxLayout="row" fxLayout.xs="column" fxLayoutGap="1rem">
+        <form fxLayout="row" fxLayout.xs="column" fxLayoutGap="1rem" [formGroup]="addStudentForm">
             <div fxLayout="column">
                 <label for="">Name: </label>
-                <input type="text" name="name" id="name" placeholder="Name" [(ngModel)]="inputName">
+                <input type="text" name="name" id="name" placeholder="Name" formControlName="name">
             </div>
             <div fxLayout="column">
                 <label for="">Surname: </label>
-                <input type="text" name="surname" id="surname" placeholder="Surname" [(ngModel)]="inputSurname">
+                <input type="text" name="surname" id="surname" placeholder="Surname" formControlName="surname">
             </div>
             <div fxLayout="column">
                 <label for="">Age: </label>
-                <input type="number" name="age" id="age" placeholder="Age" [(ngModel)]="inputAge">
+                <input type="number" name="age" id="age" placeholder="Age" formControlName="age">
             </div>
             <button type="submit" (click)="addStudent()">Add</button>
         </form>
