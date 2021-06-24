@@ -3,8 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
-import { FooComponent } from './components/foo/foo.component';
-import { FilmService } from './services/film.service';
 import { StudentComponent } from './components/student/student.component';
 import { StudentService } from './services/student.service';
 import { StudentsComponent } from './components/students/students.component';
@@ -14,7 +12,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
   declarations: [
     AppComponent,
-    FooComponent,
     StudentComponent,
     StudentsComponent
   ],
@@ -24,7 +21,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FormsModule,
     FlexLayoutModule
   ],
-  providers: [FilmService, StudentService],
+  providers: [StudentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
