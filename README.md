@@ -1,27 +1,136 @@
-# AngularDemo
+# angular-demo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.5.
+Simple project to learn how to use Angular.
+It has a backend in https://github.com/Diego-EC/angular-demo-backend
 
-## Development server
+## In this demo I've used
+1. [Responsive](#responsive)
+2. [Reactive Forms](#reactive-forms)
+3. [Routing](#routing)
+4. [Communication Between Components](#communication-between-components)
+5. [httpclient](#httpclient)
+   - [CORS](#cors)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Responsive
+### flex-layout
+Angular Flex Layout provides a sophisticated layout API using Flexbox CSS + mediaQuery. [API-Documentation](https://github.com/angular/flex-layout/wiki/API-Documentation)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+``` ts
+<div fxLayout="column" fxLayoutAlign="center center"  fxLayoutGap="3rem">
+```
+``` ts
+<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center">
+```
 
-## Build
+- **ng-container**
+es como el Fragment de React
+``` html
+<ng-container>
+ <div>Foo</div>
+ <div>Bar</div>
+</ng-container>
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+&nbsp;
+## Reactive Forms
+- Start by installing the Angular Layout library from npm
+``` console
+$ npm i -s @angular/flex-layout @angular/cdk
+``` 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Imports
+``` ts
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
-## Running end-to-end tests
+[formGroup]="myForm"
+formControlName="email"
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- FormBuilder: in the TypeScript
+![form-builder](/readme-img/form-builder.png)
 
-## Further help
+- FormGroup: in the HTML
+![form-group](/readme-img/form-group.png)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+&nbsp;
+## Routing
+- It is similar to React
+
+- app.module.ts
+``` ts
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  { path: 'login', component: LoginComponent },
+  { path: 'students', component: StudentsComponent },
+  { path: '',   redirectTo: '/login', pathMatch: 'full' },
+];
+
+  imports: [
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes)
+  ],
+```
+
+- app-routing.module.ts
+``` ts
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+```
+
+- routerLink
+``` html
+<button routerLink="/students">Login</button>
+```
+
+&nbsp;
+## Communication Between Components
+- @Input: From parent to child
+
+  - In the children
+  ``` ts
+  import { Input } from '@angular/core';
+
+  export class StudentComponent implements OnInit {
+    @Input() student: Student;
+    @Input() index: number;
+  }
+  ```
+
+  - In the parent
+  ``` html
+  <app-student *ngFor="let student of students; let i = index" [student]="student" [index]="i"></app-student>
+  ```
+
+- @Output: From child to parent
+
+&nbsp;
+## httpclient
+
+``` js
+import { HttpClientModule } from '@angular/common/http';
+```
+``` js
+  getAllStudents(){
+    const path = "https://jsonplaceholder.typicode.com/users";
+    return this.httpClient.get<Student[]>(path);
+  }
+```
+``` js
+this.studentService.getAllStudents().subscribe(students => console.log(students));
+```
+### CORS
+- proxy.conf.json
+- @CrossOrigin
