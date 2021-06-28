@@ -9,12 +9,13 @@ import { StudentsComponent } from './components/students/students.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './components/login/login.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'students', component: StudentsComponent },
-  { path: '',   redirectTo: '/students', pathMatch: 'full' },
+  { path: '',   redirectTo: '/login', pathMatch: 'full' },
 ];
 
 @NgModule({
@@ -29,7 +30,8 @@ const routes: Routes = [
     AppRoutingModule,
     FlexLayoutModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    HttpClientModule
   ],
   providers: [StudentService],
   bootstrap: [AppComponent]
