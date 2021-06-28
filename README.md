@@ -52,7 +52,7 @@ formControlName="email"
 ![form-builder](/readme-img/form-builder.png)
 
 - FormGroup: in the HTML
-![form-group](/readme-img/form-group.png)
+![form-group](/readme-img/form-group-img.png)
 
 
 &nbsp;
@@ -133,3 +133,4 @@ this.studentService.getAllStudents().subscribe(students => console.log(students)
 ### CORS
 - proxy.conf.json
 - @CrossOrigin
+
