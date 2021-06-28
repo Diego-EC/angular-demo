@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Student } from 'src/app/models/student.model';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StudentService {
-  private API_ROOT = "https://jsonplaceholder.typicode.com";
   students: Student[] = [];
 
   constructor(private httpClient: HttpClient) {}
@@ -17,12 +17,13 @@ export class StudentService {
   }
 
   getAllStudents(){
-    const path = `${this.API_ROOT}/users`;
+    //const path = `${environment.API_ROOT}/students`;
+    const path = `/students`;
     return this.httpClient.get<Student[]>(path);
   }
 
-  getStudentsById(id: string){
-    const path = `${this.API_ROOT}/users/${id}`;
+  /*getStudentsById(id: string){
+    const path = `${environment.API_ROOT}/users/${id}`;
     return this.httpClient.get<Student>(path);
-  }
+  }*/
 }
