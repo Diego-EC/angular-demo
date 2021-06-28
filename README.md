@@ -11,7 +11,6 @@ It has a backend in https://github.com/Diego-EC/angular-demo-backend
 5. [httpclient](#httpclient)
    - [CORS](#cors)
 
-
 ## Responsive
 ### flex-layout
 Angular Flex Layout provides a sophisticated layout API using Flexbox CSS + mediaQuery. [API-Documentation](https://github.com/angular/flex-layout/wiki/API-Documentation)
