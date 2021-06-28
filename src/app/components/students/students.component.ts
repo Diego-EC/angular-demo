@@ -18,19 +18,12 @@ export class StudentsComponent implements OnInit {
   });
 
   constructor(private studentService: StudentService, private formBuilder: FormBuilder) { 
-    //this.students = studentService.getStudents();
-    this.studentService.getAllStudents().subscribe(students => this.students = students);
-    //this.getAllStudents();
-    //this.getStudentById();
+    this.getStudents();
   }
 
-  getAllStudents(){
-    this.studentService.getAllStudents().subscribe(students => console.log(students));
+  getStudents(){
+    this.studentService.getStudents().subscribe(students => this.students = students);
   }
-
-  /*getStudentById(){
-    this.studentService.getStudentsById('1').subscribe(student => console.log(student["name"]));
-  }*/
 
   ngOnInit(): void {
   }
